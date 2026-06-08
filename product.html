@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>GoldMine Product</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+body{
+    padding:20px;
+}
+
+.back{
+    background:#333;
+    color:#fff;
+    border:none;
+    padding:6px;
+    margin-bottom:10px;
+    cursor:pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<button class="back" onclick="history.back()">⬅ Back</button>
+
+<div id="productBox"></div>
+
+<script>
+
+const products = {
+ring:{
+name:"Diamond Ring",
+price:"1,000,000 PKR",
+img:"https://images.pexels.com/photos/31459470/pexels-photo-31459470.jpeg",
+desc:"Luxury diamond ring with premium finish."
+},
+earring:{
+name:"Gold Earrings",
+price:"25,000 PKR",
+img:"https://images.pexels.com/photos/1457740/pexels-photo-1457740.jpeg",
+desc:"Elegant gold earrings for special occasions."
+},
+bangles:{
+name:"Luxury Bangles",
+price:"15,000 PKR",
+img:"https://images.pexels.com/photos/265856/pexels-photo-265856.jpeg",
+desc:"Traditional luxury bangles."
+}
+};
+
+let item=new URLSearchParams(window.location.search).get("item");
+
+let p=products[item];
+
+document.getElementById("productBox").innerHTML=`
+<img src="${p.img}" style="width:100%;border-radius:10px;">
+<h2>${p.name}</h2>
+<h3>${p.price}</h3>
+<p>${p.desc}</p>
+
+<button>Add to Cart</button>
+<button>Add to Wishlist</button>
+`;
+
+</script>
+
+</body>
+</html>
