@@ -8,197 +8,149 @@
 <style>
 
 body{
-    margin:0;
-    font-family:Georgia;
-    background:#000;
-    color:#D4AF37;
-    transition:0.3s;
+margin:0;
+font-family:Georgia;
+background:#000;
+color:#D4AF37;
 }
 
-/* ================= HEADER ================= */
 header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:12px;
-    background:#111;
-    border-bottom:1px solid gold;
-    position:sticky;
-    top:0;
-    z-index:10;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px;
+background:#111;
+border-bottom:1px solid gold;
+position:sticky;
+top:0;
+z-index:10;
 }
 
-/* LEFT */
-.left{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
+.left{display:flex;gap:10px;align-items:center;}
+.logo{font-size:22px;color:gold;cursor:pointer;}
 
-.logo{
-    font-size:22px;
-    color:gold;
-    font-style:italic;
-    cursor:pointer;
-}
+.search{width:35%;padding:8px;}
 
-/* SEARCH */
-.search{
-    width:40%;
-    padding:8px;
-    border:none;
-    border-radius:6px;
-}
-
-/* RIGHT */
-.right{
-    display:flex;
-    gap:10px;
-    align-items:center;
-}
-
-/* ================= GRID ================= */
 .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:15px;
-    padding:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:15px;
+padding:20px;
 }
 
-/* CARD (DESKTOP) */
 .card{
-    background:#111;
-    border:1px solid gold;
-    border-radius:10px;
-    padding:10px;
-    text-align:center;
-    transition:0.3s;
+background:#111;
+border:1px solid gold;
+padding:10px;
+border-radius:10px;
+text-align:center;
 }
 
 .card img{
-    width:100%;
-    height:120px;
-    object-fit:cover;
-    border-radius:8px;
+width:100%;
+height:120px;
+object-fit:cover;
 }
 
-/* BUTTON */
 button{
-    width:100%;
-    margin-top:5px;
-    padding:6px;
-    background:gold;
-    border:none;
-    cursor:pointer;
-    font-weight:bold;
-    border-radius:6px;
+width:100%;
+margin-top:5px;
+padding:6px;
+background:gold;
+border:none;
+font-weight:bold;
+cursor:pointer;
 }
 
-/* ================= PANELS ================= */
+/* PANELS */
 .panel{
-    position:fixed;
-    top:0;
-    right:-350px;
-    width:300px;
-    height:100%;
-    background:#111;
-    padding:15px;
-    transition:0.3s;
-    overflow-y:auto;
-    border-left:2px solid gold;
-    z-index:20;
+position:fixed;
+top:0;
+right:-400px;
+width:320px;
+height:100%;
+background:#111;
+padding:15px;
+overflow-y:auto;
+transition:0.3s;
+border-left:2px solid gold;
+z-index:50;
 }
 
-.panel.open{ right:0; }
+.panel.open{right:0;}
 
-.item{
-    padding:8px;
-    border-bottom:1px solid #333;
+.item{padding:5px;border-bottom:1px solid #333;}
+
+/* ADMIN EDIT UI */
+.adminItem{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:6px;
+border-bottom:1px solid #333;
 }
 
-/* =================================================
-   📱 PROFESSIONAL MOBILE UI MODE
-================================================= */
-
-.mobile{
-    background:#0b0b0b;
+.smallBtn{
+width:auto;
+padding:4px 6px;
+font-size:12px;
+margin-left:5px;
 }
 
-/* HEADER becomes app bar */
-.mobile header{
-    flex-direction:column;
-    gap:8px;
-    align-items:stretch;
+/* QUICK VIEW */
+#quickPopup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:100;
 }
 
-/* search becomes app bar input */
-.mobile .search{
-    width:100%;
-    background:#1a1a1a;
-    color:#fff;
+.quick-box{
+background:#111;
+border:2px solid gold;
+padding:20px;
+width:300px;
 }
 
-/* grid becomes clean feed */
-.mobile .grid{
-    grid-template-columns:1fr;
-    padding:10px;
-    gap:12px;
+/* TOAST */
+#toast{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+background:gold;
+color:#000;
+padding:10px;
+display:none;
 }
 
-/* card becomes mobile product tile */
-.mobile .card{
-    display:flex;
-    gap:10px;
-    text-align:left;
-    align-items:center;
-    padding:10px;
-    border-radius:16px;
-    box-shadow:0 0 10px rgba(255,215,0,0.15);
+/* MOBILE MODE */
+.mobile .grid{grid-template-columns:1fr;}
+.mobile header{flex-direction:column;}
+.mobile .search{width:100%;}
+
+/* MOBILE NAV */
+#mobileNav{
+display:none;
+position:fixed;
+bottom:0;
+width:100%;
+background:#111;
+color:gold;
+justify-content:space-around;
+padding:10px;
+border-top:1px solid gold;
+z-index:200;
 }
 
-/* image left side */
-.mobile .card img{
-    width:90px;
-    height:90px;
-    border-radius:12px;
-}
-
-/* text compact */
-.mobile .card h4{
-    margin:0;
-    font-size:14px;
-}
-
-/* buttons stacked small */
-.mobile button{
-    padding:6px;
-    border-radius:20px;
-    font-size:12px;
-}
-
-/* ================= BOTTOM NAV (MOBILE APP STYLE) ================= */
-
-.bottom-nav{
-    display:none;
-}
-
-.mobile .bottom-nav{
-    display:flex;
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
-    background:#111;
-    border-top:1px solid gold;
-    justify-content:space-around;
-    padding:10px 0;
-    z-index:50;
-}
-
-.bottom-nav div{
-    color:gold;
-    font-size:14px;
-    cursor:pointer;
+.mobile #mobileNav{
+display:flex;
 }
 
 </style>
@@ -207,184 +159,262 @@ button{
 <body>
 
 <header>
-
 <div class="left">
-    <span onclick="toggleMobileUI()" style="cursor:pointer;">📱</span>
-    <div class="logo" onclick="location.reload()">GoldMine</div>
+<span onclick="toggleMobile()">📱</span>
+<div class="logo">GoldMine</div>
 </div>
 
-<input class="search" id="search" onkeyup="search()" placeholder="Search products">
+<input class="search" onkeyup="search(this.value)">
 
 <div class="right">
-    <span onclick="toggleFilter()">🎛️</span>
-    <span onclick="toggleAbout()">ℹ️</span>
-    <span onclick="toggleContact()">📞</span>
-    <span onclick="toggleWish()">❤️ <span id="wishCount">0</span></span>
-    <span onclick="toggleCart()">🛒 <span id="cartCount">0</span></span>
+<span onclick="openAdminLogin()">🛠️ Admin</span>
+<span onclick="toggleCart()">🛒 <b id="cartCount">0</b></span>
+<span onclick="toggleWish()">❤️ <b id="wishCount">0</b></span>
 </div>
-
 </header>
 
 <!-- PRODUCTS -->
-<div class="grid">
-
-<div class="card">
-<img src="https://images.pexels.com/photos/31459470/pexels-photo-31459470.jpeg">
-<div>
-<h4>Diamond Ring</h4>
-<p>1,000,000 PKR</p>    
-<button onclick="addCart('Diamond Ring')">Cart</button>
-<button onclick="addWish('Diamond Ring')">Wishlist</button>
-</div>
-</div>
-
-<div class="card">
-<img src="https://images.pexels.com/photos/1457740/pexels-photo-1457740.jpeg">
-<div>
-<h4>Gold Earrings</h4>
-<p>25,000 PKR</p>
-<button onclick="addCart('Gold Earrings')">Cart</button>
-<button onclick="addWish('Gold Earrings')">Wishlist</button>
-</div>
-</div>
-
-</div>
+<div class="grid" id="productGrid"></div>
 
 <!-- CART -->
-<div class="panel" id="cart">
-
+<div class="panel" id="cartPanel">
 <button onclick="toggleCart()">⬅ Back</button>
-
-<h2>Cart</h2>
-
+<h3>Cart</h3>
 <div id="cartItems"></div>
-
-<button>💳 Checkout</button>
-
 </div>
 
 <!-- WISHLIST -->
-<div class="panel" id="wish">
-
+<div class="panel" id="wishPanel">
 <button onclick="toggleWish()">⬅ Back</button>
-
-<h2>Wishlist</h2>
-
+<h3>Wishlist</h3>
 <div id="wishItems"></div>
+</div>
+
+<!-- QUICK VIEW -->
+<div id="quickPopup">
+<div class="quick-box">
+<h3 id="qName"></h3>
+<img id="qImg" style="width:100%">
+<p id="qPrice"></p>
+<button onclick="closeQuick()">Close</button>
+</div>
+</div>
+
+<!-- ADMIN LOGIN -->
+<div id="adminLogin" class="panel">
+<button onclick="closeAdminLogin()">⬅ Back</button>
+<h3>Admin Login</h3>
+<input id="adminPass" type="password" placeholder="Password">
+<button onclick="checkAdmin()">Login</button>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="panel" id="adminPanel">
+<button onclick="toggleAdmin()">⬅ Back</button>
+
+<h3>Admin Panel</h3>
+
+<!-- ADD -->
+<h4>Add Product</h4>
+<input id="pName" placeholder="Name">
+<input id="pPrice" placeholder="Price">
+<input id="pImg" placeholder="Image URL">
+<button onclick="addProduct()">Add Product</button>
+
+<hr>
+
+<!-- EDIT -->
+<h4>Edit Product</h4>
+<select id="editIndex" onchange="loadEdit()"></select>
+<input id="eName" placeholder="Edit Name">
+<input id="ePrice" placeholder="Edit Price">
+<input id="eImg" placeholder="Edit Image">
+<button onclick="updateProduct()">Update Product</button>
+
+<hr>
+
+<!-- DELETE LIST -->
+<h4>Manage Products</h4>
+<div id="adminList"></div>
 
 </div>
 
-<!-- BOTTOM NAV (MOBILE ONLY) -->
-<div class="bottom-nav">
-<div onclick="toggleCart()">🛒 Cart</div>
-<div onclick="location.reload()">🏠 Home</div>
-<div onclick="toggleWish()">❤️ Wish</div>
+<!-- MOBILE NAV -->
+<div id="mobileNav">
+<div onclick="toggleCart()">Cart</div>
+<div onclick="toggleWish()">Wish</div>
+<div onclick="openAdminLogin()">Admin</div>
 </div>
-
-<script>
-
-let cart=[];
-let wish=[];
-let mobile=false;
-
-/* CART */
-function addCart(item){
-cart.push(item);
-document.getElementById("cartCount").innerText=cart.length;
-
-let html="";
-cart.forEach(c=>{
-html+=`<div class="item">${c}</div>`;
-});
-
-document.getElementById("cartItems").innerHTML=html;
-}
-
-function toggleCart(){
-document.getElementById("cart").classList.toggle("open");
-}
-
-/* WISHLIST */
-function addWish(item){
-if(!wish.includes(item)){
-wish.push(item);
-}
-document.getElementById("wishCount").innerText=wish.length;
-
-let html="";
-wish.forEach(w=>{
-html+=`<div class="item">${w}</div>`;
-});
-
-document.getElementById("wishItems").innerHTML=html;
-}
-
-function toggleWish(){
-document.getElementById("wish").classList.toggle("open");
-}
-
-/* SEARCH */
-function search(){
-let val=document.getElementById("search").value.toLowerCase();
-let cards=document.querySelectorAll(".card");
-
-cards.forEach(c=>{
-c.style.display=c.innerText.toLowerCase().includes(val)
-?"block":"none";
-});
-}
-
-/* MOBILE MODE */
-function toggleMobileUI(){
-mobile=!mobile;
-document.body.classList.toggle("mobile");
-}
-function toggleFilter(){
-document.getElementById("filter").classList.toggle("open");
-}
-
-function toggleAbout(){
-document.getElementById("about").classList.toggle("open");
-}
-
-function toggleContact(){
-document.getElementById("contact").classList.toggle("open");
-}
-
-function quickView(title,price,img){
-document.getElementById("qTitle").innerText=title;
-document.getElementById("qPrice").innerText=price;
-document.getElementById("qImg").src=img;
-document.getElementById("quickPopup").style.display="flex";
-}
-
-function closeQuick(){
-document.getElementById("quickPopup").style.display="none";
-}
-
-function toast(msg){
-const t=document.getElementById("toast");
-t.innerText=msg;
-t.style.display="block";
-
-setTimeout(()=>{
-t.style.display="none";
-},1500);
-}
-<!-- FILTER -->
-<div class="panel" id="filter">...</div>
-
-<!-- ABOUT -->
-<div class="panel" id="about">...</div>
-
-<!-- CONTACT -->
-<div class="panel" id="contact">...</div>
 
 <!-- TOAST -->
 <div id="toast"></div>
 
-<!-- QUICK VIEW -->
-<div id="quickPopup">...</div>    
+<script>
+
+/* SAFE ELEMENTS */
+const cartPanel=document.getElementById("cartPanel");
+const wishPanel=document.getElementById("wishPanel");
+const adminPanel=document.getElementById("adminPanel");
+const quickPopup=document.getElementById("quickPopup");
+
+/* DATA */
+let products=[
+{name:"Diamond Ring",price:1000000,img:"https://images.pexels.com/photos/31459470/pexels-photo-31459470.jpeg"},
+{name:"Gold Earrings",price:25000,img:"https://images.pexels.com/photos/1457740/pexels-photo-1457740.jpeg"}
+];
+
+let cart=[];
+let wish=[];
+
+/* RENDER */
+function render(){
+let g=document.getElementById("productGrid");
+g.innerHTML="";
+
+products.forEach((p,i)=>{
+g.innerHTML+=`
+<div class="card">
+<img src="${p.img}">
+<h4>${p.name}</h4>
+<p>${p.price} PKR</p>
+<button onclick="quickView(${i})">View</button>
+</div>`;
+});
+
+renderAdmin();
+}
+
+/* ADMIN RENDER */
+function renderAdmin(){
+
+let list=document.getElementById("adminList");
+let select=document.getElementById("editIndex");
+
+list.innerHTML="";
+select.innerHTML="";
+
+products.forEach((p,i)=>{
+
+list.innerHTML+=`
+<div class="adminItem">
+<span>${p.name}</span>
+<div>
+<button class="smallBtn" onclick="editProduct(${i})">Edit</button>
+<button class="smallBtn" onclick="deleteProduct(${i})">Delete</button>
+</div>
+</div>`;
+
+select.innerHTML+=`<option value="${i}">${p.name}</option>`;
+});
+}
+
+render();
+
+/* 💣 DELETE */
+function deleteProduct(i){
+products.splice(i,1);
+render();
+toast("Deleted");
+}
+
+/* ✏️ EDIT */
+function editProduct(i){
+editIndex.value=i;
+loadEdit();
+adminPanel.classList.add("open");
+}
+
+/* LOAD EDIT */
+function loadEdit(){
+let i=editIndex.value;
+let p=products[i];
+
+eName.value=p.name;
+ePrice.value=p.price;
+eImg.value=p.img;
+}
+
+/* UPDATE */
+function updateProduct(){
+let i=editIndex.value;
+
+products[i]={
+name:eName.value,
+price:ePrice.value,
+img:eImg.value
+};
+
+render();
+toast("Updated");
+}
+
+/* QUICK VIEW */
+function quickView(i){
+let p=products[i];
+qName.innerText=p.name;
+qPrice.innerText=p.price;
+qImg.src=p.img;
+quickPopup.style.display="flex";
+}
+
+function closeQuick(){
+quickPopup.style.display="none";
+}
+
+/* PANELS */
+function toggleCart(){cartPanel.classList.toggle("open");}
+function toggleWish(){wishPanel.classList.toggle("open");}
+function toggleAdmin(){adminPanel.classList.toggle("open");}
+
+/* ADMIN LOGIN */
+function openAdminLogin(){
+adminLogin.classList.add("open");
+}
+
+function closeAdminLogin(){
+adminLogin.classList.remove("open");
+}
+
+function checkAdmin(){
+if(adminPass.value==="af9009af9009af9009"){
+closeAdminLogin();
+toggleAdmin();
+toast("Admin Opened");
+}else toast("Wrong Password");
+}
+
+/* ADD */
+function addProduct(){
+products.push({
+name:pName.value,
+price:pPrice.value,
+img:pImg.value
+});
+render();
+toast("Added");
+}
+
+/* SEARCH */
+function search(v){
+document.querySelectorAll(".card").forEach(c=>{
+c.style.display=c.innerText.toLowerCase().includes(v.toLowerCase())?"block":"none";
+});
+}
+
+/* MOBILE */
+function toggleMobile(){
+document.body.classList.toggle("mobile");
+}
+
+/* TOAST */
+function toast(m){
+toastBox.innerText=m;
+toastBox.style.display="block";
+setTimeout(()=>toastBox.style.display="none",1500);
+}
+
+let toastBox=document.getElementById("toast");
+let adminLogin=document.getElementById("adminLogin");
 
 </script>
 
