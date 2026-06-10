@@ -339,6 +339,38 @@ function toggleMobileUI(){
 mobile=!mobile;
 document.body.classList.toggle("mobile");
 }
+function toggleFilter(){
+document.getElementById("filter").classList.toggle("open");
+}
+
+function toggleAbout(){
+document.getElementById("about").classList.toggle("open");
+}
+
+function toggleContact(){
+document.getElementById("contact").classList.toggle("open");
+}
+
+function quickView(title,price,img){
+document.getElementById("qTitle").innerText=title;
+document.getElementById("qPrice").innerText=price;
+document.getElementById("qImg").src=img;
+document.getElementById("quickPopup").style.display="flex";
+}
+
+function closeQuick(){
+document.getElementById("quickPopup").style.display="none";
+}
+
+function toast(msg){
+const t=document.getElementById("toast");
+t.innerText=msg;
+t.style.display="block";
+
+setTimeout(()=>{
+t.style.display="none";
+},1500);
+}    
 
 </script>
 
