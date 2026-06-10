@@ -258,10 +258,15 @@ const adminPanel=document.getElementById("adminPanel");
 const quickPopup=document.getElementById("quickPopup");
 
 /* DATA */
-let products=[
+let saved = JSON.parse(localStorage.getItem("products"));
+
+let products = saved && saved.length ? saved : [
 {name:"Diamond Ring",price:1000000,img:"https://images.pexels.com/photos/31459470/pexels-photo-31459470.jpeg"},
 {name:"Gold Earrings",price:25000,img:"https://images.pexels.com/photos/1457740/pexels-photo-1457740.jpeg"}
 ];
+function saveProducts(){
+localStorage.setItem("products", JSON.stringify(products));
+}
 
 let cart=[];
 let wish=[];
@@ -313,6 +318,10 @@ render();
 /* 💣 DELETE */
 function deleteProduct(i){
 products.splice(i,1);
+
+// ✅ SAVE UPDATED ARRAY TO LOCALSTORAGE
+localStorage.setItem("products", JSON.stringify(products));
+
 render();
 toast("Deleted");
 }
@@ -383,15 +392,32 @@ toast("Admin Opened");
 }else toast("Wrong Password");
 }
 
-/* ADD */
+/* ADD PRODUCT (LOCALSTORAGE ENABLED) */
 function addProduct(){
-products.push({
-name:pName.value,
-price:pPrice.value,
-img:pImg.value
-});
+
+// 1. create new product
+let newProduct = {
+name: pName.value,
+price: pPrice.value,
+img: pImg.value
+};
+
+// 2. push into array
+products.push(newProduct);
+
+// 3. SAVE TO LOCALSTORAGE (IMPORTANT)
+localStorage.setItem("products", JSON.stringify(products));
+
+// 4. refresh UI
 render();
-toast("Added");
+
+// 5. clear input fields (optional but good UX)
+pName.value = "";
+pPrice.value = "";
+pImg.value = "";
+
+// 6. message
+toast("Product Added Successfully");
 }
 
 /* SEARCH */
